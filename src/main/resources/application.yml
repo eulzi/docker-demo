@@ -1,0 +1,14 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:mariadb://host.docker.internal:3306/eulzi
+#    url: jdbc:mariadb://localhost:3306/eulzi
+    username: eulzi
+    password: eulzi
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MariaDB10Dialect
+    hibernate:
+      ddl-auto: none

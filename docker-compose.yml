@@ -1,0 +1,23 @@
+version: "3.5"
+services:
+  db:
+    image: mariadb:10
+    container_name: maria-db
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db-config:/etc/mysql/conf.d
+      - ./db-init:/docker-entrypoint-initdb.d
+    env_file: maria.env
+    environment:
+      TZ: Asia/Seoul
+    restart: always
+    expose:
+      - "3306"
+  web:
+    build: .
+    container_name: demo-web
+    depends_on:
+      - db
+    ports:
+      - "8081:8081"
